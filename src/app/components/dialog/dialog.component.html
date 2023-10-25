@@ -1,0 +1,48 @@
+<!-- <p>dialog works!</p> -->
+<h2 mat-dialog-title>Potential Duplicates</h2>
+<mat-dialog-content class="mat-typography">
+
+
+    <!-- <mat-selection-list>
+      <mat-list-option [selected]="lead.duplicate_of" #leadRef *ngFor="let lead of data.list" (selectedChange)="selectedChange(leadRef.value, lead, $event)">
+        {{lead.source}}
+      </mat-list-option>
+    </mat-selection-list> -->
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">source</th>
+          <th scope="col">first name</th>
+          <th scope="col">last name</th>
+          <th scope="col">email</th>
+          <th scope="col">cell phone</th>
+          <th scope="col">home phone</th>
+          <th scope="col">Is actual duplicate?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let lead of data.list; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{lead.source}}</td>
+          <td>{{lead.first_name}}</td>
+          <td>{{lead.last_name}}</td>
+          <td>{{lead.email}}</td>
+          <td>{{lead.cell_phone}}</td>
+          <td>{{lead.home_phone}}</td>
+          <td>
+            <mat-selection-list>
+              <mat-list-option [selected]="lead.duplicate_of" #leadRef (selectedChange)="selectedChange(leadRef.value, lead, $event)">
+              </mat-list-option>
+            </mat-selection-list>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

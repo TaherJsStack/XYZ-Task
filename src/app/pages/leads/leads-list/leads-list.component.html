@@ -1,0 +1,70 @@
+<p>leads-list works!</p>
+<!-- <li *ngFor="let lead of LeadsList">{{ lead.email }}</li> -->
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+  </ng-container>
+
+  <!-- duplicate_of Column -->
+  <ng-container matColumnDef="duplicate_of">
+    <th mat-header-cell *matHeaderCellDef> duplicate of </th>
+    <td mat-cell *matCellDef="let element" > {{ element.duplicate_of | leadName }} </td>
+  </ng-container>
+
+  <!-- source Column -->
+  <ng-container matColumnDef="source">
+    <th mat-header-cell *matHeaderCellDef> source </th>
+    <td mat-cell *matCellDef="let element"> {{element.source}} </td>
+  </ng-container>
+
+  <!-- first_name Column -->
+  <ng-container matColumnDef="first_name">
+    <th mat-header-cell *matHeaderCellDef> first name </th>
+    <td mat-cell *matCellDef="let element"> {{element.first_name}} </td>
+  </ng-container>
+        <!-- '', '', '', '', '', '', '', '' -->
+
+  <!-- last_name Column -->
+  <ng-container matColumnDef="last_name">
+    <th mat-header-cell *matHeaderCellDef> last name </th>
+    <td mat-cell *matCellDef="let element"> {{element.last_name}} </td>
+  </ng-container>
+
+  <!-- email Column -->
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> email </th>
+    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+  </ng-container>
+
+  <!-- cell_phone Column -->
+  <ng-container matColumnDef="cell_phone">
+    <th mat-header-cell *matHeaderCellDef> cell phone </th>
+    <td mat-cell *matCellDef="let element"> {{element.cell_phone}} </td>
+  </ng-container>
+
+  <!-- home_phone Column -->
+  <ng-container matColumnDef="home_phone">
+    <th mat-header-cell *matHeaderCellDef> home phone </th>
+    <td mat-cell *matCellDef="let element"> {{element.home_phone}} </td>
+  </ng-container>
+
+  <!-- controle Column -->
+  <ng-container matColumnDef="controle">
+    <th mat-header-cell *matHeaderCellDef> controle </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-raised-button color="primary" (click)="getLeadPotentialDuplicatesById(element.lead_id)">Show Duplicates</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+
+
